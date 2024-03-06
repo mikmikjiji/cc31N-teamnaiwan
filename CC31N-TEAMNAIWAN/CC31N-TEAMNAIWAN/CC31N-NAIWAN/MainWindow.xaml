@@ -1,0 +1,271 @@
+@@ -6,6 +6,9 @@
+        xmlns:local="clr-namespace:CC31N_NAIWAN"
+        mc:Ignorable="d"
+        Title="IGOROT ADVENTURER" Height="750" Width="1020">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoleanToVisibility"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+@@ -17,24 +20,76 @@
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Menu" Background="Aquamarine" Grid.ColumnSpan="3"/>
+
+<!--  Menu page-->
+        <Label Grid.Row="0" Grid.Column="0" Content="Menu" Grid.ColumnSpan="3" FontSize="22"/>
+        <Border BorderBrush="Crimson" BorderThickness="1" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="3"/>
+        <Image Source="/Engine;component/Images/Locations/BenuFarmField.jpg" Grid.Row="0" Grid.Column="0"/>
+        <!-- End of Menu -->
+
+      <!--PLayer Information-->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="*"/>                
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Player Information" Background="BurlyWood"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Player PlayerImage" Background="DeepSkyBlue"/>
+<!--End of player information page-->
+
+          <!--rows of Player Information-->
+            <Label Grid.Row="0" Grid.Column="0"  Background="BurlyWood"  />
+            <Grid  Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions >
+                    <RowDefinition Height ="Auto"/>
+                    <RowDefinition Height ="Auto"/>
+                    <RowDefinition Height ="Auto"/>
+                    <RowDefinition Height ="Auto"/>
+                    <RowDefinition Height ="Auto"/>
+                    <RowDefinition Height ="Auto"/>
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                  <!--content of Player Information-->
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Name:"  FontSize="15" Foreground="DarkRed"/>
+                <Label Grid.Row="0" Grid.Column="1" Content="{Binding CurrentPlayer.Name}"  FontSize="15"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Class:"  FontSize="15"/>
+                <Label Grid.Row="1" Grid.Column="1" Content="{Binding CurrentPlayer.CharacterClass}"  FontSize="15"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Hit Points:"  FontSize="15"/>
+                <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentPlayer.HitPoints}"   FontSize="15"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Gold:"  FontSize="15"/>
+                <Label Grid.Row="3" Grid.Column="1" Content="{Binding CurrentPlayer.Gold}"  FontSize="15"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="XP:"  FontSize="15"/>
+                <Label Grid.Row="4" Grid.Column="1" Content="{Binding CurrentPlayer.ExperiencePoints}"  FontSize="15"/>
+                <Label Grid.Row="5" Grid.Column="0" Content="Level:"  FontSize="15"/>
+                <Label Grid.Row="5" Grid.Column="1" Content="{Binding CurrentPlayer.Level}"  FontSize="15"/>
+
+
+            <!--End content of Player Information-->
+
+
+            <!--Player Image-->
+            </Grid>
+            <Label Grid.Row="2" Grid.Column="0" Content="Player Image" Background="DeepSkyBlue"/>
+        <!--END of Player Image-->
+
+          <!--Inventory and Quest-->
+        </Grid>
+
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Inventory and Quests" Background="Fuchsia"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="Game Message" Background="Gold"/>
+           <!--End of inventory and quest-->
+
+      <!--Game MESsage -->
+        <Label Grid.Row="1" Grid.Column="2" Content="Game Message" Background="Gold"/>
+      <!--END of game message-->
+
+      <!--Item info and item button use-->
+        <Label Grid.Row="2" Grid.Column="1" Content="Combat or Item" Background="CornflowerBlue"/>
+        <Grid Grid.Row="2" Grid.Column="1">
+        <Grid.RowDefinitions>
+@@ -48,22 +103,78 @@
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"  Grid.Column="0" Content="Item Information" Background="LightSteelBlue"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Item Buttons" Background="DarkKhaki"/>
+
+          <!--End of item and buttons use-->
+
+<!--Location image-->
+        </Grid>
+        <Label Grid.Row="1" Grid.Column="2" Content="Location and Enemy" Background="IndianRed"/>
+        <Grid Grid.Row="1" Grid.Column="2">
+        <Label Grid.Row="1" Grid.Column="1"  Background="IndianRed"/>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Location Information" Background="DarkSlateBlue"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Enemy Information" Background="SeaGreen"/>
+
+            <Grid Grid.Row ="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           Text="{Binding CurrentLocation.Name}"
+                        />
+                <Image Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Height="125"
+                       Width=" 125"
+                  Source = "{Binding CurrentLocation.ImageName}"/>
+
+                <TextBlock Grid.Row="2"
+                           HorizontalAlignment="Center"
+                           TextWrapping ="Wrap"
+                           Text="{Binding CurrentLocation.Description}"/>
+            </Grid>
+            <!--End of location image-->
+
+<!--Enemy location iamge-->
+
+
+            <Label Grid.Row="2" Grid.Column="1" Content="Enemy Information" Background="SeaGreen"/>
+
+
+            <!--End of ENEMY image-->
+
+          <!--Navigation button-->
+        </Grid>
+        <Label Grid.Row="2" Grid.Column="2" Content="Navigation Buttons" Background="LawnGreen"/>
+        <Label Grid.Row="2" Grid.Column="2"  Background="LawnGreen"/>
+        <Grid Grid.Row="2" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width=" *"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="1" Grid.Column="0" Height="25" Width="65" Margin="10" Visibility="{Binding HasLocationToWest,Converter={StaticResource BoleanToVisibility}}" Click="OnClick_MoveWest"
+                    Content="West"   />
+            <Button Grid.Row="0" Grid.Column="1"   Height="25" Width="65" Margin="10" Visibility="{Binding HasLocationToNorth,Converter={StaticResource BoleanToVisibility}}" Click="OnClick_MoveNorth"
+                 Content="North" />
+            <Button Grid.Row="1" Grid.Column="2" Height="25" Width="65" Margin="10" Visibility="{Binding HasLocationToEast,Converter={StaticResource BoleanToVisibility}}" Click="OnClick_MoveEast"
+                  Content="East" />
+            <Button Grid.Row="2" Grid.Column="1" Height="25" Width="65" Margin="10" Visibility="{Binding HasLocationToSouth,Converter={StaticResource BoleanToVisibility}}" Click="OnClick_MoveSouth"
+                      Content="South"/>
+
+    </Grid>
+        </Grid>
+<!--End of Navigation button-->
+
+      </Grid>
+</Window>
+  24 changes: 22 additions & 2 deletions24  
+</CC31N-NAIWAN>/MainWindow.xaml.cs
+@@ -8,17 +8,37 @@
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+using Engine.ViewModels;
+namespace CC31N_NAIWAN
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        private GameSession _gameSession;
+        public MainWindow()
+        {
+            InitializeComponent();
+            _gameSession = new GameSession();
+          DataContext = _gameSession;
+        }
+        private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
+        {
+            _gameSession.MoveNorth();
+        }
+        private void OnClick_MoveSouth(object sender, RoutedEventArgs e)
+        {
+            _gameSession.MoveSouth();
+        }
+    }
+        private void OnClick_MoveWest(object sender, RoutedEventArgs e)
+        {
+            _gameSession.MoveWest();
+        }
+        private void OnClick_MoveEast(object sender, RoutedEventArgs e)
+        {
+            _gameSession.MoveEast();
+        }
+
+    } 
+}
+ 42 changes: 42 additions & 0 deletions42  
+Engine/Engine.csproj
+@@ -0,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWpf>true</UseWpf>
+
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Images\Locations\Home.jpg\**" />
+    <EmbeddedResource Remove="Images\Locations\Home.jpg\**" />
+    <None Remove="Images\Locations\Home.jpg\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Locations\AlmaMarketSquare.jpg" />
+    <None Remove="Images\Locations\BenuFarmField.jpg" />
+    <None Remove="Images\Locations\BenuFarmHouse.jpg" />
+    <None Remove="Images\Locations\DawnWoodForest.png" />
+    <None Remove="Images\Locations\EldoriaTownSquare.png" />
+    <None Remove="Images\Locations\GrassyLand.png" />
+    <None Remove="Images\Locations\Home.jpg" />
+    <None Remove="Images\Locations\LynxCabin.png" />
+    <None Remove="Images\Locations\TownGate.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Locations\AlmaMarketSquare.jpg" />
+    <Resource Include="Images\Locations\BenuFarmField.jpg" />
+    <Resource Include="Images\Locations\BenuFarmHouse.jpg" />
+    <Resource Include="Images\Locations\DawnWoodForest.png" />
+    <Resource Include="Images\Locations\EldoriaTownSquare.png" />
+    <Resource Include="Images\Locations\GrassyLand.png" />
+    <Resource Include="Images\Locations\Home.jpg" />
+    <Resource Include="Images\Locations\LynxCabin.png" />
+    <Resource Include="Images\Locations\TownGate.png" />
+  </ItemGroup>
+
+</Project>
